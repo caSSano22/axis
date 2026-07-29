@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis — Access the World's Alpha (Robinhood Chain Protocol)</title>
+  <meta name="description" content="Axis turns global market dislocations into tokenized alpha. Earn 10–20% net APY through institutional-grade delta-neutral arbitrage on Robinhood Chain.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:title" content="Axis — Access the World's Alpha">
+  <meta property="og:description" content="Institutional-grade synthetic dollar USDx & yield protocol natively built for Robinhood Chain.">
+</head>
+<body>
+
+  <!-- Animated Mesh Background -->
+  <div class="bg-mesh"></div>
+
+  <div class="page-wrapper">
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+      <div style="display: flex; align-items: center;">
+        <a href="#" class="brand-logo-link">
+          <svg class="brand-svg-logo" viewBox="0 0 92 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.4545 18.1115V30H13.7643V19.4278C13.7643 19.2981 13.7127 19.1737 13.621 19.082C13.43 18.8909 13.1203 18.891 12.9293 19.082L5.4361 26.5761L3.53331 24.6733L11.0271 17.1797C11.218 16.9888 11.218 16.6792 11.0271 16.4883C10.9354 16.3966 10.8111 16.3451 10.6814 16.3451H0.109375V13.6549H11.9978L16.4545 18.1115Z" fill="currentColor"/>
+            <path d="M16.4545 10.572C16.4545 10.7017 16.506 10.826 16.5977 10.9177C16.7886 11.1087 17.0982 11.1087 17.2891 10.9177L24.7826 3.42393L26.6854 5.32673L19.1914 12.8199C19.0003 13.0109 19.0003 13.3206 19.1913 13.5116C19.2831 13.6034 19.4075 13.6549 19.5372 13.6549H30.1094V16.3451H18.2209L13.7643 11.8885V0H16.4545V10.572Z" fill="currentColor"/>
+            <path d="M88.0107 14.6169C87.7097 13.0571 86.2594 12.1268 84.7544 12.1268C83.2768 12.1268 82.0728 12.8929 82.0728 14.179C82.1001 15.4925 83.7693 16.0124 85.3017 16.3134C88.9137 16.9701 91.2123 17.9279 91.2123 20.7737C91.2123 23.6195 88.3664 24.8783 85.2743 24.8783C81.5802 24.8783 78.9259 23.0175 78.707 19.9802L81.6897 19.7886C81.9907 21.4304 83.2494 22.4703 85.247 22.4703C86.5604 22.4703 88.2022 22.0051 88.2022 20.6369C88.1749 19.0771 86.3415 18.8856 84.7818 18.5299C81.6897 17.8731 79.0628 17.0249 79.0628 14.2611C79.0628 11.4427 81.3613 9.71875 84.9733 9.71875C88.1202 9.71875 90.5282 11.5521 90.9934 14.4527L88.0107 14.6169Z" fill="currentColor"/>
+            <path d="M73.0977 10.047H75.9983V24.5498H73.0977V10.047ZM73.043 7.91266V5.14893H76.0803V7.91266H73.043Z" fill="currentColor"/>
+            <path d="M66.7127 10.0469H70.0785L65.0435 17.1614L70.2974 24.5497H66.9316L63.2922 19.2137L59.6255 24.5497H56.2598L61.541 17.1341L56.506 10.0469H59.8718L63.2922 15.0818L66.7127 10.0469Z" fill="currentColor"/>
+            <path d="M39.3027 24.5498L46.3079 5.12158H50.084L57.0892 24.5498H53.915L52.1637 19.4875H44.2282L42.4496 24.5498H39.3027ZM45.1586 16.8059H51.2333L48.1959 7.94005L45.1586 16.8059Z" fill="currentColor"/>
+          </svg>
+        </a>
+
+        <div class="chain-badge">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #00c805; display: inline-block;"></span>
+          ROBINHOOD CHAIN
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#mechanism" class="nav-link">Mechanism</a>
+        <a href="#dapp" class="nav-link active">App Portal</a>
+        <a href="#security" class="nav-link">Security</a>
+        <a href="https://docs.axis.to" target="_blank" class="nav-link">Docs</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <button class="btn-rounded btn-outline" onclick="openContactModal()">Contact Us</button>
+        <button class="btn-rounded btn-dark" id="navbarConnectBtn" onclick="connectRobinhoodWallet()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+          <span>Connect Wallet</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+              INSTITUTIONAL YIELD ENGINE
+            </div>
+
+            <h1 class="hero-headline">
+              Access the<br>world’s alpha.
+            </h1>
+
+            <p class="hero-subtitle">
+              Axis turns global market dislocations into tokenized alpha on <strong>Robinhood Chain</strong>. Earn 10–20% net APY through institutional delta-neutral arbitrage.
+            </p>
+
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <a href="#dapp" class="btn-rounded btn-green" style="padding: 14px 32px; font-size: 1rem;">
+                Launch USDx App
+              </a>
+              <button class="btn-rounded btn-outline" style="padding: 14px 28px; font-size: 0.95rem;" onclick="openContactModal()">
+                Institutional Portal
+              </button>
+            </div>
+
+            <div class="hero-backed">
+              <div class="backed-label">Backed by Industry Leaders</div>
+              <div class="backed-logos">
+                <div class="backed-logo-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  GALAXY DIGITAL
+                </div>
+                <div class="backed-logo-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                  FALCONX
+                </div>
+                <div class="backed-logo-item" style="color: #00c805;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00c805" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  ROBINHOOD WEB3
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Metric Stack Card -->
+          <div class="metric-stack-card">
+            <div class="primary-stat-box">
+              <div>
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">ITD Net APY</div>
+                <div class="stat-val-huge">14.82<span style="font-size: 2rem; color: var(--accent-green);">%</span></div>
+              </div>
+              <div class="apy-live-badge">
+                <div class="pulse-dot"></div>
+                REAL-TIME ACCRUAL
+              </div>
+            </div>
+
+            <div class="metrics-sub-grid">
+              <div class="metric-sub-item">
+                <div class="metric-sub-val">$48.5M</div>
+                <div class="metric-sub-label">Current TVL</div>
+              </div>
+              <div class="metric-sub-item">
+                <div class="metric-sub-val">&gt;$110B</div>
+                <div class="metric-sub-label">Volume Traded</div>
+              </div>
+              <div class="metric-sub-item">
+                <div class="metric-sub-val">14</div>
+                <div class="metric-sub-label">Venues Covered</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Your Live Accrued Yield:</span>
+              <span id="liveYieldEarnedVal" class="mono-text" style="font-size: 1.1rem; font-weight: 700; color: var(--accent-green);">$142.850400</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="section-about">
+        <div class="section-label">ABOUT AXIS</div>
+        <h2 class="section-title">A tokenized engine turning market dislocations into profit.</h2>
+        <p class="section-desc">
+          The Axis engine is a proprietary, low-latency execution system designed to identify and capture risk-managed arbitrage opportunities. The resulting profit is passed directly onchain to holders of <strong>USDx</strong> and <strong>sUSDx</strong> on Robinhood Chain.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="pillar-title">Proven Track Record</h3>
+            <p class="pillar-desc">36% annualized historical returns with 4.9 Sharpe ratio and peak AUM exceeding $400M.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="pillar-title">Liquid & Instant</h3>
+            <p class="pillar-desc">Redeem instantly with deep market depth and optimized zero-slippage Robinhood execution.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="pillar-title">Verifiable Onchain</h3>
+            <p class="pillar-desc">Monitor yield distributions and reserve attestations transparently on Robinhood Chain EVM.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MECHANISM SECTION -->
+      <section id="mechanism" class="section-mechanism">
+        <div class="section-label">HOW AXIS WORKS</div>
+        <h2 class="section-title">The Arbitrage Execution Workflow</h2>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">STEP 01</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 10px;">Signal Identification</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">Our low-latency system continuously scans global order books to detect spread dislocations.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">STEP 02</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 10px;">Risk-Managed Execution</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">High-frequency algorithms execute precise delta-neutral trades to capture identified spread instantly.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">STEP 03</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 10px;">Value Accrual & Streaming</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">Net profits stream directly to sUSDx holders on Robinhood Chain with sub-second compounding.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE DAPP PORTAL -->
+      <section id="dapp" class="section-dapp">
+        <div class="section-label">ROBINHOOD CHAIN DAPP PORTAL</div>
+        <h2 class="section-title">Mint & Stake USDx</h2>
+
+        <div class="dapp-container-grid">
+          
+          <!-- Interactive Mint / Stake Card -->
+          <div class="dapp-interactive-card">
+            
+            <div class="dapp-tab-header">
+              <button class="dapp-tab-btn active" data-tab="mint">MINT USDX</button>
+              <button class="dapp-tab-btn" data-tab="stake">STAKE SUSDX</button>
+              <button class="dapp-tab-btn" data-tab="redeem">REDEEM</button>
+            </div>
+
+            <!-- Input Box -->
+            <div class="input-group">
+              <div class="input-label-row">
+                <span>YOU PAY</span>
+                <span>Balance: <strong id="usdcBalanceVal">$12,450.00</strong></span>
+              </div>
+              <div class="input-box">
+                <input type="number" id="depositInputAmount" class="token-input" placeholder="0.00" oninput="calculateOutputs()">
+                <div class="token-selector-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12"/></svg>
+                  USDC
+                </div>
+              </div>
+              <div class="preset-pills">
+                <button class="pill-btn" data-pct="25">25%</button>
+                <button class="pill-btn" data-pct="50">50%</button>
+                <button class="pill-btn" data-pct="75">75%</button>
+                <button class="pill-btn" onclick="setMaxAmount()">MAX</button>
+              </div>
+            </div>
+
+            <!-- Output Box -->
+            <div class="input-group">
+              <div class="input-label-row">
+                <span>YOU RECEIVE</span>
+                <span>USDx Balance: <strong id="usdxBalanceVal">$2,500.00</strong></span>
+              </div>
+              <div class="input-box" style="background: rgba(15, 23, 42, 0.4);">
+                <span id="receiveOutputVal" class="mono-text" style="font-size: 1.5rem; font-weight: 700; color: var(--accent-light-blue);">0.00</span>
+                <div class="token-selector-btn" style="background: rgba(59, 130, 246, 0.2); color: var(--accent-light-blue);">
+                  USDx
+                </div>
+              </div>
+            </div>
+
+            <!-- Details Summary -->
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span style="color: var(--text-muted);">Protocol APY</span>
+                <span class="mono-text text-green" style="font-weight: 700;">14.82% APY</span>
+              </div>
+              <div class="summary-row">
+                <span style="color: var(--text-muted);">Est. Annual Yield</span>
+                <span id="estAnnualYieldVal" class="mono-text" style="font-weight: 700; color: var(--accent-green);">+$0.00 / yr</span>
+              </div>
+              <div class="summary-row">
+                <span style="color: var(--text-muted);">Robinhood Chain Gas</span>
+                <span class="mono-text" style="color: #00c805;">Zero-Gas Sponsored</span>
+              </div>
+            </div>
+
+            <!-- Primary Action Button -->
+            <button id="dappActionBtn" class="btn-rounded btn-green" style="width: 100%; padding: 16px; font-size: 1rem; border-radius: 14px; justify-content: center;" onclick="executeDappAction()">
+              MINT USDX ON ROBINHOOD CHAIN
+            </button>
+          </div>
+
+          <!-- Live Onchain Transaction Feed -->
+          <div class="feed-panel">
+            <div class="feed-header">
+              <div>
+                <h3 style="font-size: 1.1rem; font-weight: 700;">Robinhood Live Transactions</h3>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Real-time EVM yield & minting logs</span>
+              </div>
+              <span class="pulse-dot"></span>
+            </div>
+
+            <div id="transactionFeedList" class="feed-list">
+              <div class="feed-item">
+                <div>
+                  <div style="font-weight: 700;">Stake sUSDx</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);" class="mono-text">0xRH...4921</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-weight: 700; color: var(--accent-green);" class="mono-text">+1,200 sUSDx</div>
+                  <div style="font-size: 0.75rem; color: #00c805;">Robinhood EVM</div>
+                </div>
+              </div>
+
+              <div class="feed-item">
+                <div>
+                  <div style="font-weight: 700;">Mint USDx</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);" class="mono-text">0xRH...8812</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-weight: 700; color: var(--accent-light-blue);" class="mono-text">+5,000 USDx</div>
+                  <div style="font-size: 0.75rem; color: #00c805;">Robinhood EVM</div>
+                </div>
+              </div>
+
+              <div class="feed-item">
+                <div>
+                  <div style="font-weight: 700;">Yield Distribution</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);" class="mono-text">0xRH...3319</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-weight: 700; color: var(--accent-green);" class="mono-text">+$14.28 Yield</div>
+                  <div style="font-size: 0.75rem; color: #00c805;">Robinhood EVM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECURITY & TRANSPARENCY SECTION -->
+      <section id="security" class="section-security">
+        <div class="section-label">SECURITY & TRANSPARENCY</div>
+        <h2 class="section-title">Institutional Protection & Audits</h2>
+
+        <div class="security-grid">
+          <div class="security-card">
+            <div class="security-card-title">Audits</div>
+            <div class="partner-logo-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m9 12 2 2 4-4"/></svg>
+              Zellic Security
+            </div>
+          </div>
+
+          <div class="security-card">
+            <div class="security-card-title">Off-Exchange Mirroring</div>
+            <div class="partner-logo-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="3.6" y1="9" x2="20.4" y2="9"/><line x1="3.6" y1="15" x2="20.4" y2="15"/></svg>
+              Copper ClearLoop
+            </div>
+          </div>
+
+          <div class="security-card">
+            <div class="security-card-title">Custody Partner</div>
+            <div class="partner-logo-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Fireblocks Vaults
+            </div>
+          </div>
+
+          <div class="security-card">
+            <div class="security-card-title">Onchain Attestations</div>
+            <div class="partner-logo-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Chainlink Oracles
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <svg class="brand-svg-logo" style="height: 22px;" viewBox="0 0 92 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.4545 18.1115V30H13.7643V19.4278C13.7643 19.2981 13.7127 19.1737 13.621 19.082C13.43 18.8909 13.1203 18.891 12.9293 19.082L5.4361 26.5761L3.53331 24.6733L11.0271 17.1797C11.218 16.9888 11.218 16.6792 11.0271 16.4883C10.9354 16.3966 10.8111 16.3451 10.6814 16.3451H0.109375V13.6549H11.9978L16.4545 18.1115Z" fill="currentColor"/>
+            <path d="M16.4545 10.572C16.4545 10.7017 16.506 10.826 16.5977 10.9177C16.7886 11.1087 17.0982 11.1087 17.2891 10.9177L24.7826 3.42393L26.6854 5.32673L19.1914 12.8199C19.0003 13.0109 19.0003 13.3206 19.1913 13.5116C19.2831 13.6034 19.4075 13.6549 19.5372 13.6549H30.1094V16.3451H18.2209L13.7643 11.8885V0H16.4545V10.572Z" fill="currentColor"/>
+            <path d="M88.0107 14.6169C87.7097 13.0571 86.2594 12.1268 84.7544 12.1268C83.2768 12.1268 82.0728 12.8929 82.0728 14.179C82.1001 15.4925 83.7693 16.0124 85.3017 16.3134C88.9137 16.9701 91.2123 17.9279 91.2123 20.7737C91.2123 23.6195 88.3664 24.8783 85.2743 24.8783C81.5802 24.8783 78.9259 23.0175 78.707 19.9802L81.6897 19.7886C81.9907 21.4304 83.2494 22.4703 85.247 22.4703C86.5604 22.4703 88.2022 22.0051 88.2022 20.6369C88.1749 19.0771 86.3415 18.8856 84.7818 18.5299C81.6897 17.8731 79.0628 17.0249 79.0628 14.2611C79.0628 11.4427 81.3613 9.71875 84.9733 9.71875C88.1202 9.71875 90.5282 11.5521 90.9934 14.4527L88.0107 14.6169Z" fill="currentColor"/>
+            <path d="M73.0977 10.047H75.9983V24.5498H73.0977V10.047ZM73.043 7.91266V5.14893H76.0803V7.91266H73.043Z" fill="currentColor"/>
+            <path d="M66.7127 10.0469H70.0785L65.0435 17.1614L70.2974 24.5497H66.9316L63.2922 19.2137L59.6255 24.5497H56.2598L61.541 17.1341L56.506 10.0469H59.8718L63.2922 15.0818L66.7127 10.0469Z" fill="currentColor"/>
+            <path d="M39.3027 24.5498L46.3079 5.12158H50.084L57.0892 24.5498H53.915L52.1637 19.4875H44.2282L42.4496 24.5498H39.3027ZM45.1586 16.8059H51.2333L48.1959 7.94005L45.1586 16.8059Z" fill="currentColor"/>
+          </svg>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 Axis Foundation. Robinhood Chain Yield Protocol.</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://x.com/AxisFDN" target="_blank" class="footer-link">Twitter / X (@AxisFDN)</a>
+          <a href="https://t.me/AxisFDN" target="_blank" class="footer-link">Telegram</a>
+          <a href="https://github.com/caSSano22/axis" target="_blank" class="footer-link">GitHub</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Wallet Modal -->
+  <div class="modal-backdrop" id="walletModal">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.3rem; font-weight: 700;">Connect Robinhood Wallet</h3>
+        <button style="background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;" onclick="closeWalletModal()">&times;</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">Connect your Robinhood EVM Web3 Wallet to mint USDx and earn 14.82% APY in real-time.</p>
+      <button class="btn-rounded btn-green" style="width: 100%; padding: 14px 0; border-radius: 12px; justify-content: center;" onclick="confirmWalletConnection()">
+        Confirm Robinhood Wallet Connection
+      </button>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.3rem; font-weight: 700;">Contact Axis Institutional Desk</h3>
+        <button style="background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;" onclick="closeContactModal()">&times;</button>
+      </div>
+      <form onsubmit="submitContactForm(event)">
+        <div style="margin-bottom: 16px;">
+          <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">Email Address</label>
+          <input type="email" required placeholder="name@institution.com" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-light); padding: 12px; border-radius: 8px; color: #fff; outline: none;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">Expected Allocation</label>
+          <input type="text" placeholder="$100,000+" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-light); padding: 12px; border-radius: 8px; color: #fff; outline: none;">
+        </div>
+        <button type="submit" class="btn-rounded btn-dark" style="width: 100%; padding: 14px 0; border-radius: 12px; justify-content: center;">
+          Submit Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
