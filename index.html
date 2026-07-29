@@ -390,17 +390,44 @@
 
   </div>
 
-  <!-- Wallet Modal -->
+  <!-- Real Web3 EIP-1193 Wallet Modal -->
   <div class="modal-backdrop" id="walletModal">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h3 style="font-size: 1.3rem; font-weight: 700;">Connect Robinhood Wallet</h3>
+        <h3 style="font-size: 1.3rem; font-weight: 700;">Connect EVM Wallet</h3>
         <button style="background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;" onclick="closeWalletModal()">&times;</button>
       </div>
-      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">Connect your Robinhood EVM Web3 Wallet to mint USDx and earn 14.82% APY in real-time.</p>
-      <button class="btn-rounded btn-green" style="width: 100%; padding: 14px 0; border-radius: 12px; justify-content: center;" onclick="confirmWalletConnection()">
-        Confirm Robinhood Wallet Connection
-      </button>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px;">Connect your Web3 Wallet to interact with Axis USDx & sUSDx smart contracts on Robinhood Chain.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <button class="btn-rounded btn-outline" style="width: 100%; padding: 14px 18px; border-radius: 14px; justify-content: space-between;" onclick="connectRealEIP1193Wallet('robinhood')">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00c805" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span style="font-weight: 700;">Robinhood Web3 Wallet</span>
+          </div>
+          <span style="font-size: 0.75rem; color: #00c805; font-weight: 700;">EVM NATIVE</span>
+        </button>
+
+        <button class="btn-rounded btn-outline" style="width: 100%; padding: 14px 18px; border-radius: 14px; justify-content: space-between;" onclick="connectRealEIP1193Wallet('metamask')">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            <span style="font-weight: 700;">MetaMask / Web3 Browser</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">INJECTED</span>
+        </button>
+
+        <button class="btn-rounded btn-outline" style="width: 100%; padding: 14px 18px; border-radius: 14px; justify-content: space-between;" onclick="connectRealEIP1193Wallet('coinbase')">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg>
+            <span style="font-weight: 700;">Coinbase Wallet</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">EIP-1193</span>
+        </button>
+      </div>
+
+      <div style="font-size: 0.78rem; text-align: center; color: var(--text-muted);">
+        By connecting, you agree to Axis Terms of Service & Privacy Policy.
+      </div>
     </div>
   </div>
 
