@@ -1,19 +1,19 @@
 /* ==========================================================================
-   AXIS.TO - ROBINHOOD USDG STABLECOIN PAIR LOGIC
-   Supports: USDg (Global Dollar on Robinhood Chain) & sUSDg (Staked USDg)
-   Network: Robinhood Chain EVM
+   AXIS.TO - INTERACTIVE EFFECTS & REAL EIP-1193 WEB3 WALLET LOGIC
+   Features: 3D Card Tilt, Grid Mouse Spotlight Glow, Scroll Reveal, 
+             Dynamic Number Counters, USDg Robinhood Stablecoin Pair
    ========================================================================== */
 
-// Global State - Robinhood USDg Pair
+// Global State
 let userAddress = null;
 let currentChainId = null;
 let realEthBalance = 0;
 let usdgBalance = 12450.00;
 let susdgBalance = 1850.00;
 let currentApy = 10.40;
-let totalYieldEarned = 142.8504;
+let totalYieldEarned = 142.850478;
 
-// Robinhood Chain EVM Network Configuration
+// Robinhood Chain EVM Network Parameters
 const ROBINHOOD_CHAIN_PARAMS = {
   chainId: '0xa4b1', // 42161 / Robinhood EVM
   chainName: 'Robinhood Chain EVM',
@@ -28,13 +28,100 @@ const ROBINHOOD_CHAIN_PARAMS = {
 
 // On DOM Loaded
 document.addEventListener('DOMContentLoaded', () => {
+  initMouseSpotlightAnd3DTilt();
+  initScrollReveal();
+  initStatNumberCounter();
   initLiveYieldStreamer();
   initPresetButtons();
   initTabSwitchers();
   checkExistingEIP1193Connection();
 });
 
-// Live Yield Sub-Second Accrual Simulator
+// 1. Mouse Tracking Spotlight Glow & 3D Stat Card Tilt
+function initMouseSpotlightAnd3DTilt() {
+  const gridSection = document.querySelector('.hero-right-grid');
+  const statCard = document.querySelector('.stat-card-white');
+
+  if (gridSection) {
+    // Add spotlight overlay element dynamically
+    const spotlight = document.createElement('div');
+    spotlight.className = 'grid-spotlight-glow';
+    gridSection.appendChild(spotlight);
+
+    gridSection.addEventListener('mousemove', (e) => {
+      const rect = gridSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      gridSection.style.setProperty('--mouse-x', `${x}px`);
+      gridSection.style.setProperty('--mouse-y', `${y}px`);
+
+      // 3D Card Tilt Calculation
+      if (statCard) {
+        const cardRect = statCard.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+
+        const rotateX = ((e.clientY - cardCenterY) / (cardRect.height / 2)) * -10;
+        const rotateY = ((e.clientX - cardCenterX) / (cardRect.width / 2)) * 10;
+
+        statCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      }
+    });
+
+    gridSection.addEventListener('mouseleave', () => {
+      if (statCard) {
+        statCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+      }
+    });
+  }
+}
+
+// 2. Scroll Reveal Intersection Observer
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  if (!revealElements || revealElements.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// 3. Dynamic Number Count-Up Animation
+function initStatNumberCounter() {
+  const hugeStat = document.querySelector('.stat-number-huge');
+  if (!hugeStat) return;
+
+  let startApy = 0;
+  const targetApy = 10.4;
+  const duration = 1500;
+  const startTime = performance.now();
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // EaseOutCubic function
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const current = (startApy + (targetApy - startApy) * easeProgress).toFixed(1);
+
+    hugeStat.textContent = `${current}%`;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+// 4. Live Yield Sub-Second Accrual Simulator
 function initLiveYieldStreamer() {
   setInterval(() => {
     if (susdgBalance > 0) {
@@ -50,7 +137,7 @@ function initLiveYieldStreamer() {
   }, 100);
 }
 
-// Auto Check Existing Wallet Connection
+// 5. Auto Check Existing Wallet Connection
 async function checkExistingEIP1193Connection() {
   if (typeof window.ethereum !== 'undefined') {
     try {
@@ -69,7 +156,7 @@ async function checkExistingEIP1193Connection() {
 
       window.ethereum.on('chainChanged', (chainId) => {
         currentChainId = chainId;
-        showToast(`Switched Robinhood network chain: ${chainId}`);
+        showToast(`Switched Robinhood EVM Chain: ${chainId}`);
       });
     } catch (err) {
       console.warn('Error checking existing Web3 connection:', err);
@@ -77,7 +164,7 @@ async function checkExistingEIP1193Connection() {
   }
 }
 
-// Open Wallet Modal
+// Modals Controls
 function connectRobinhoodWallet() {
   const modal = document.getElementById('walletModal');
   if (modal) modal.classList.add('open');
@@ -214,12 +301,11 @@ function setMaxAmount() {
   }
 }
 
-// Dynamic Input Calculation
 function calculateOutputs() {
   const inputVal = parseFloat(document.getElementById('depositInputAmount')?.value || 0);
 }
 
-// Execute Real Smart Contract / Transaction Dispatcher
+// Execute Real Smart Contract Transaction
 async function executeDappAction() {
   const inputEl = document.getElementById('depositInputAmount');
   const amount = parseFloat(inputEl?.value || 0);
@@ -243,7 +329,7 @@ async function executeDappAction() {
 
       const txParams = {
         from: userAddress,
-        to: '0x000000000000000000000000000000000000USDg', // USDg Robinhood Smart Contract Address
+        to: '0x000000000000000000000000000000000000USDg',
         value: '0x0',
         data: '0xa9059cbb' + '000000000000000000000000' + userAddress.substring(2) + Math.floor(amount * 1e6).toString(16).padStart(64, '0')
       };
@@ -282,13 +368,11 @@ function processLocalDappAction(activeTab, amount) {
   }
 }
 
-// Update UI Balances
 function updateUIBalances() {
   const usdcEl = document.getElementById('usdcBalanceVal');
   if (usdcEl) usdcEl.textContent = `$${usdgBalance.toLocaleString('en-US', { minimumFractionDigits: 2 })} USDg`;
 }
 
-// Tab Switcher
 function initTabSwitchers() {
   document.querySelectorAll('.dapp-tab').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -311,7 +395,6 @@ function initTabSwitchers() {
   });
 }
 
-// Modals
 function openContactModal() {
   const modal = document.getElementById('contactModal');
   if (modal) modal.classList.add('open');
@@ -328,7 +411,6 @@ function submitContactForm(e) {
   showToast('Thank you! Your message has been sent to Axis Institutional Desk.');
 }
 
-// Toast
 function showToast(msg) {
   const toast = document.createElement('div');
   toast.className = 'toast-msg';
